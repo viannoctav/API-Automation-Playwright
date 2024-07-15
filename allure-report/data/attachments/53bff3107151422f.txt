@@ -1,0 +1,32 @@
+==============POST API==================
+{
+  bookingid: 3718,
+  booking: {
+    firstname: 'Rivita Anggun',
+    lastname: 'Octaviani',
+    totalprice: 1000,
+    depositpaid: true,
+    bookingdates: { checkin: '2018-01-01', checkout: '2019-01-01' },
+    additionalneeds: 'Playwright'
+  }
+}
+{
+  firstname: 'Rivita Anggun',
+  lastname: 'Octaviani',
+  totalprice: 1000,
+  depositpaid: true,
+  bookingdates: { checkin: '2018-01-01', checkout: '2019-01-01' },
+  additionalneeds: 'Playwright'
+}
+==============GET API==================
+==============GENERATE TOKEN==================
+Token No is : bb36925203a5a4c
+==============PUT API==================
+{
+  firstname: 'Vita Tetsing Edit',
+  lastname: 'Edit Playwright',
+  totalprice: 111,
+  depositpaid: true,
+  bookingdates: { checkin: '2018-01-01', checkout: '2019-01-01' },
+  additionalneeds: 'Kucing'
+}

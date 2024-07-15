@@ -1,0 +1,30 @@
+// Load playwright module
+const {test, expect} = require('@playwright/test')
+const bookingAPIRequestBody = require('../test-data/post_dynamic_request_body.json');
+import { stringFormat } from '../utils/common';
+
+// Write a test
+test('Create POST API Request using dynamic JSON file',async({ request })=>{
+
+    const dynamicRequestBody = stringFormat(JSON.stringify(bookingAPIRequestBody),"Rivita Anggun","Octaviani","Playwright")
+
+    // Create POST API Request
+    const postAPIResponse = await request.post(`/booking`,{
+        data: JSON.parse(dynamicRequestBody)
+    })
+
+    // Validate Status Code
+    expect(postAPIResponse.ok()).toBeTruthy();
+    expect(postAPIResponse.status()).toBe(200);
+
+    const postAPIResponseBody = await postAPIResponse.json();
+    console.log(postAPIResponseBody);
+
+    // Validate JSON Api Response
+    expect(postAPIResponseBody.booking).toHaveProperty("firstname","Rivita Anggun")
+    expect(postAPIResponseBody.booking).toHaveProperty("lastname","Octaviani")
+    
+    // Validate nested JSON objects
+    expect(postAPIResponseBody.booking.bookingdates).toHaveProperty("checkin","2018-01-01")
+    expect(postAPIResponseBody.booking.bookingdates).toHaveProperty("checkout","2019-01-01")
+})
